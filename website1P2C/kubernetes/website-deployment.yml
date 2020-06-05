@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-deployment
+  labels:
+    app: website
+    rel: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: website
+  template:
+    metadata:
+      name: website-deployment
+      labels:
+        app: website
+        rel: dev
+    spec:
+      containers:
+      - name: website-build
+        image: burakkiymaz/website-build
+        volumeMounts:
+        - mountPath: /var/www/burakkiymaz/_site
+          name: website-volume
+
+      - name: website-publish
+        image: burakkiymaz/website-publish
+        volumeMounts:
+        - mountPath: /var/www/burakkiymaz/_site
+          name: website-volume
+        ports:
+        - name: website-port
+          containerPort: 80
+          protocol: TCP
+
+      volumes:
+      - name: website-volume
+
