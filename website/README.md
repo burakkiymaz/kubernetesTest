@@ -4,4 +4,5 @@ There is two container in a pod. One of container is creating a static website w
 Especially Jekyll framework serving website itself but I configured pod like this for using two container in a pod
 
 You can check project diagram below:
+
 ![project diagram](project-diagram.png)
