@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: website-service
 spec: 
-  ports: 
-  - port: 80
-    nodePort: 30080
-    targetPort: website-port
-    protocol: TCP
   selector:
     app: website
-  type: NodePort
+  ports: 
+    - port: 9080
+      targetPort: 80
+      protocol: TCP
+
 
