@@ -6,8 +6,10 @@ pipeline {
 
     stages{
         stage("init") { 
-            script{
-                gv = load "tests.groovy"
+            steps{
+                script{
+                    gv = load "tests.groovy"
+                }    
             }
         }
         stage("build") {
