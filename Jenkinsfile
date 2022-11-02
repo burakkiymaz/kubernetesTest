@@ -1,5 +1,5 @@
 def gv
-
+def jg // jekyll groovy
 pipeline {
 
     agent any
@@ -9,6 +9,7 @@ pipeline {
             steps{
                 script{
                     gv = load "tests.groovy"
+                    jg = load "website1P2C/dockerfiles/jekyll-cnt/jekyll.groovy"
                 }    
             }
         }
@@ -16,7 +17,7 @@ pipeline {
             steps {
                 echo "Building the application"
                 script {
-                    gv.buildApp()
+                    jg.buildApp()
                 }
             }
         }
@@ -24,7 +25,7 @@ pipeline {
             steps {
                 echo "Testing the application"
                 script {
-                    gv.testApp()
+                    jg.testApp()
                 }
             }
         }
@@ -32,7 +33,7 @@ pipeline {
             steps {
                 echo "Deploying the application"
                 script {
-                    gv.deployApp()
+                    jg.deployApp()
                 }
             }
         }
