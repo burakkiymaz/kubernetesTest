@@ -1,6 +1,6 @@
 def buildApp() {
     echo 'building app'
-    whereis docker
+    docker build
 }
 
 
