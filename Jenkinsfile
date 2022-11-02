@@ -23,11 +23,17 @@ pipeline {
         stage("test") {
             steps {
                 echo "Testing the application"
+                script {
+                    gv.testApp()
+                }
             }
         }
         stage("deploy") {
             steps {
-                echo "Deploy the application"
+                echo "Deploying the application"
+                script {
+                    gv.deployApp()
+                }
             }
         }
     }
