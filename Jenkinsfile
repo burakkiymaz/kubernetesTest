@@ -25,9 +25,6 @@ def jg // jekyll groovy
 pipeline {
 
     agent any
-    tools {
-        docker "latest"
-    }
     stages{
         stage("init") { 
             steps{
