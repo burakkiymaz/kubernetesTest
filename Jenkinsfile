@@ -25,6 +25,7 @@ def jg // jekyll groovy
 pipeline {
 
     agent any
+    
     stages{
         stage("init") { 
             steps{
@@ -38,7 +39,7 @@ pipeline {
             steps {
                 echo "Building the application"
                 script {
-                    sh 'docker build -t burakkiymaz/website-build:alpha .'
+                    jg.buildApp()
                 }
             }
         }
