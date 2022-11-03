@@ -1,6 +1,8 @@
+def jekyllImage
+
 def buildApp() {
     echo 'Jekyll image building'
-    def jekyllImage = docker.build("burakkiymaz/website-build:alpha")
+    jekyllImage = docker.build("burakkiymaz/website-build:alpha")
 }
 
 def testApp() {
