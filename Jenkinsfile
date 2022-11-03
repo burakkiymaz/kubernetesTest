@@ -38,7 +38,7 @@ pipeline {
             steps {
                 echo "Building the application"
                 script {
-                    jg.buildApp()
+                    sh 'docker build -t burakkiymaz/website-build:alpha .'
                 }
             }
         }
