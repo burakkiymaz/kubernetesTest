@@ -51,7 +51,7 @@ pipeline {
                 echo "Deploying the application"
                 script {
                     echo 'test'
-                    withDockerRegistry( [credentialsId: 'pipeline-dockerhub', url: '']) {
+                    withDockerRegistry( [credentialsId: 'dockerhub-credential', url: '']) {
                         jekyllImage.push()
                     }
                     //jg.deployApp()
