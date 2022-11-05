@@ -41,13 +41,11 @@ pipeline {
             }
         }
         stage("test") {
-            agent {
-                docker { 
-                    image 'burakkiymaz/website-build:alpha' 
-                }
-            }
             steps {
-                sh 'curl localhost:4000'
+                withDockerContainer{
+                    image 'burakkiymaz/website-build:alpha',
+                    args '-p 4000:4000'
+                }
             }
         }
         stage("deploy") {

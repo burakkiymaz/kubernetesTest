@@ -19,7 +19,7 @@ RUN yes | gem install jekyll bundler
 # Creating publishing folder
 RUN mkdir -p /var/www/burakkiymaz
 COPY files/ /var/www/burakkiymaz
-EXPOSE 4000
+EXPOSE 4000 4000
 
 WORKDIR /var/www/burakkiymaz
 CMD ["jekyll", "serve"]
