@@ -59,4 +59,15 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'Deploy to DockerHub succussful'
+        }
+        failure {
+            echo 'Deployment Fail.. Exiting. '
+            script {
+                sh 'docker stop website-build; docker rm website-build'
+            }
+        }
+    }
 }
