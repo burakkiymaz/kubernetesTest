@@ -4,6 +4,8 @@ responseTest=`curl -s -o /dev/null -w "%{http_code}" localhost:4000`
 if [[ $responseTest = 200 && $contentTest = "TEST" ]];
 then
     echo success
+    exit 0
 else 
     echo failed
+    exit 1
 fi
