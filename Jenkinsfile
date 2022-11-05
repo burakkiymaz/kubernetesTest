@@ -50,6 +50,7 @@ pipeline {
             steps {
                 echo "Deploying the application"
                 script {
+                    echo 'test'
                     //jg.deployApp()
                 }
             }
