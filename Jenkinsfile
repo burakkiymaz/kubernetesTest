@@ -22,7 +22,7 @@
 def jg // jekyll groovy
 pipeline {
     environment {
-        registryCredential = 'burakkiymaz-dockerhub'
+        registryCredential = 'pipeline-dockerhub'
     }
     agent any
     
