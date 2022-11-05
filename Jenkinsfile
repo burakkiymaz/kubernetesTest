@@ -51,6 +51,9 @@ pipeline {
                 echo "Deploying the application"
                 script {
                     echo 'test'
+                    withRegistry( [credentialsId: 'pipeline-docker', url: '']) {
+                        jekyllImage.push()
+                    }
                     //jg.deployApp()
                 }
             }
