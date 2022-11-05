@@ -43,8 +43,14 @@ pipeline {
         stage("test") {
             steps {
                 echo "Testing the application"
-                script {
-                    jg.testApp()
+                //script {
+                //    jg.testApp()
+                //}
+                agent {
+                    docker { image 'burakkiymaz/website-build:alpha'}
+                }
+                steps {
+                    sh 'curl localhost:4000'
                 }
             }
         }
