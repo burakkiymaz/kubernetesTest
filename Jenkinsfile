@@ -42,7 +42,6 @@ pipeline {
                     sh 'docker run -d --name website-build -p 4000:4000 burakkiymaz/website-build:alpha'
                     sh 'sleep 3'
                     sh 'docker exec -i website-build bash /opt/websiteTest/website-test.sh'
-                    sh 'docker stop website-build; docker rm website-build'
                 }
             }
         }
@@ -60,14 +59,16 @@ pipeline {
         }
     }
     post {
+        always {
+            script {
+                sh 'docker stop website-build; docker rm website-build'
+            }
+        }
         success {
             echo 'Deploy to DockerHub succussful'
         }
         failure {
             echo 'Deployment Fail.. Exiting. '
-            script {
-                sh 'docker stop website-build; docker rm website-build'
-            }
         }
     }
 }
