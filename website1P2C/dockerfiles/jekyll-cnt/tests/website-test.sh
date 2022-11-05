@@ -4,7 +4,6 @@ responseTest=`curl -s -o /dev/null -w "%{http_code}" localhost:4000`
 if [[ $responseTest = 200 ]];
 then
     echo Response test successful
-    exit 0
 else 
     echo Test failed because response expected 200 but returned $responseTest 
     exit 1
@@ -13,8 +12,9 @@ fi
 if [[ $contentTest = "TEST" ]];
 then
     echo Content test successful
-    exit 0
 else 
     echo Test failed because response expected TEST but returned $contentTest
     exit 1
 fi
+
+exit 0
