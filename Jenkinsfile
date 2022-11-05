@@ -60,7 +60,7 @@ pipeline {
         }
     }
     post {
-        always {
+        success {
             echo 'Deploy to DockerHub succussful'
         }
         failure {
