@@ -21,7 +21,9 @@
 
 def jg // jekyll groovy
 pipeline {
-
+    environment {
+        registryCredential = 'burakkiymaz-dockerhub'
+    }
     agent any
     
     stages{
@@ -38,15 +40,6 @@ pipeline {
                 script {
                     jg.buildApp()
                 }
-            }
-        }
-        stage("test") {
-            withDockerContainer {
-                image: 'burakkiymaz/website-build:alpha',
-                args: '-p 4000:4000'
-            }
-            steps {
-                sh 'curl loaclhost:4000'
             }
         }
         stage("deploy") {
