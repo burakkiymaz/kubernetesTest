@@ -7,8 +7,10 @@ def buildApp() {
 
 def testApp() {
     echo "Jekyll application testing"
-    jekyllImage.inside {
-        sh 'jekyll serve &'
+    agent {
+        docker { image 'burakkiymaz/website-build:alpha'}
+    }
+    steps {
         sh 'curl localhost:4000'
     }
 }
