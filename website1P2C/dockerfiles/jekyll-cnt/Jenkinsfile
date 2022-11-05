@@ -28,7 +28,7 @@ pipeline {
         stage("init") { 
             steps{
                 script{
-                    jg = load "jekyll.groovy"
+                    jg = load "website1P2C/dockerfiles/jekyll-cnt/jekyll.groovy"
                 }    
             }
         }
