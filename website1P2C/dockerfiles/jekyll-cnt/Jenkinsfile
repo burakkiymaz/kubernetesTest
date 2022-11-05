@@ -19,8 +19,6 @@
 //    }
 //}
 
-
-def gv
 def jg // jekyll groovy
 pipeline {
 
@@ -30,8 +28,7 @@ pipeline {
         stage("init") { 
             steps{
                 script{
-                    gv = load "tests.groovy"
-                    jg = load "website1P2C/dockerfiles/jekyll-cnt/jekyll.groovy"
+                    jg = load "jekyll.groovy"
                 }    
             }
         }
