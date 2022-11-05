@@ -2,7 +2,7 @@ def jekyllImage
 
 def buildApp() {
     echo 'Jekyll image building'
-    jekyllImage = docker.build("burakkiymaz/website-build:alpha")
+    jekyllImage = docker.build("burakkiymaz/website-build:alpha", "-f website1P2C/dockerfiles/jekyll-cnt/Dockerfile")
 }
 
 def testApp() {
