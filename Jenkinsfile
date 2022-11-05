@@ -46,11 +46,10 @@ pipeline {
                 //script {
                 //    jg.testApp()
                 //}
-                agent {
-                    docker { 
+                withDockerContainer { 
                         image 'burakkiymaz/website-build:alpha' 
-                    }
                 }
+                
                 steps {
                     sh 'curl localhost:4000'
                 }
