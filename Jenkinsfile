@@ -42,8 +42,8 @@ pipeline {
         }
         stage("test") {
             withDockerContainer {
-                image 'burakkiymaz/website-build:alpha',
-                args '-p 4000:4000'
+                image: 'burakkiymaz/website-build:alpha',
+                args: '-p 4000:4000'
             }
             steps {
                 sh 'curl loaclhost:4000'
