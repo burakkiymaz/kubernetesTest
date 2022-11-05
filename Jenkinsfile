@@ -40,7 +40,7 @@ pipeline {
                 echo "Image testing"
                 script {
                     sh 'docker run -d --name website-build -p 4000:4000 burakkiymaz/website-build:alpha'
-                    sh 'docker exec -it website-build curl localhost:4000'
+                    sh 'docker exec -i website-build curl -s -o /dev/null -w "%{http_code}" localhost:4000'
                     sh 'docker stop website-build; docker rm website-build'
                 }
             }
