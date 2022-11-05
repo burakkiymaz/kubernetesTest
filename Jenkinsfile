@@ -42,7 +42,7 @@ pipeline {
         }
         stage("test") {
             steps {
-                withDockerContainer{
+                withDockerContainer {
                     image 'burakkiymaz/website-build:alpha',
                     args '-p 4000:4000'
                 }
