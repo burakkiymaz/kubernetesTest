@@ -1,7 +1,0 @@
-baseurl:
-permalink: /:title/
-exclude: ['README.md']
-# status: Beta
-site-owner: "Burak Kiymaz"
-year: 2020
-

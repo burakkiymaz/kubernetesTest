@@ -8,7 +8,7 @@ def buildApp() {
 def testApp() {
     echo "Jekyll application testing"
     jekyllImage.inside {
-        sh 'curl localhost:4000'
+        sh 'jekyll serve; curl localhost:4000'
     }
 }
 
