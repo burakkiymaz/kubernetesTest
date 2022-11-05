@@ -41,18 +41,13 @@ pipeline {
             }
         }
         stage("test") {
+            agent {
+                docker { 
+                    image 'burakkiymaz/website-build:alpha' 
+                }
+            }
             steps {
-                echo "Testing the application"
-                //script {
-                //    jg.testApp()
-                //}
-                withDockerContainer { 
-                        image 'burakkiymaz/website-build:alpha' 
-                }
-                
-                steps {
-                    sh 'curl localhost:4000'
-                }
+                sh 'curl localhost:4000'
             }
         }
         stage("deploy") {
