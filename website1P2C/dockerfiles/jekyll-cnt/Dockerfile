@@ -1,16 +1,11 @@
 FROM ubuntu:latest
 
-RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y net-tools
-RUN apt-get install -y curl 
-RUN apt-get install -y vim
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y net-tools curl vim
 
 #JEKYLL install
 RUN apt-get install -y ruby-full build-essential zlib1g-dev
 
-RUN echo '# Install Ruby Gems to ~/gems' >> ~/.profile
-RUN echo 'export GEM_HOME="$HOME/gems"' >> ~/.profile
-RUN echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.profile
+RUN echo '# Install Ruby Gems to ~/gems' >> ~/.profile && echo 'export GEM_HOME="$HOME/gems"' >> ~/.profile && echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.profile
 ENV GEM_HOME="/usr/local/bundle"
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
