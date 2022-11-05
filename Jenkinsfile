@@ -41,11 +41,12 @@ pipeline {
             }
         }
         stage("test") {
+            withDockerContainer {
+                image 'burakkiymaz/website-build:alpha',
+                args '-p 4000:4000'
+            }
             steps {
-                withDockerContainer {
-                    image 'burakkiymaz/website-build:alpha',
-                    args '-p 4000:4000'
-                }
+                sh 'curl loaclhost:4000'
             }
         }
         stage("deploy") {
