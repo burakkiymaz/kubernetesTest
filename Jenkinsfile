@@ -27,14 +27,17 @@ pipeline {
     agent any
     
     stages{
-        stage("init") { 
+        stage("build") { 
             steps{
-                jekyllImage = docker.build("burakkiymaz/website-build:alpha", "-f website1P2C/dockerfiles/jekyll-cnt/Dockerfile website1P2C/dockerfiles/jekyll-cnt")    
+                echo "Building the application"
+                script {
+                    jekyllImage = docker.build("burakkiymaz/website-build:alpha", "-f website1P2C/dockerfiles/jekyll-cnt/Dockerfile website1P2C/dockerfiles/jekyll-cnt")    
+                }
             }
         }
-        stage("build") {
+        stage("test") {
             steps {
-                echo "Building the application"
+                echo "Image testing"
                 script {
                     sh 'docker run -d -n website-build -p 4000:4000 burakkiymaz/website-build:alpha'
                     sh 'docker exec -it website-build bash'
