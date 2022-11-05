@@ -19,7 +19,7 @@
 //    }
 //}
 
-def jg // jekyll groovy
+//def jg // jekyll groovy
 pipeline {
     environment {
         registryCredential = 'pipeline-dockerhub'
@@ -29,16 +29,17 @@ pipeline {
     stages{
         stage("init") { 
             steps{
-                script{
-                    jg = load "website1P2C/dockerfiles/jekyll-cnt/jekyll.groovy"
-                }    
+                jekyllImage = docker.build("burakkiymaz/website-build:alpha", "-f website1P2C/dockerfiles/jekyll-cnt/Dockerfile website1P2C/dockerfiles/jekyll-cnt")    
             }
         }
         stage("build") {
             steps {
                 echo "Building the application"
                 script {
-                    jg.buildApp()
+                    sh 'docker run -d -n website-build -p 4000:4000 burakkiymaz/website-build:alpha'
+                    sh 'docker exec -it website-build bash'
+                    sh 'curl localhost:4000;exit'
+                    sh 'docker stop website-build; docker rm website-build'
                 }
             }
         }

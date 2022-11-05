@@ -15,7 +15,6 @@ def testApp() {
 
 def deployApp() {
     echo "Jekyll application deploying"
-    sh 
 }
 
 return this
